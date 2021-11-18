@@ -448,7 +448,7 @@ class LPPLS(object):
                 tc, m, w, a, b, c, c1, c2, O, D = self.fit(max_searches, obs=obs_shrinking_slice)
                 res[i_idx-1].append([])
                 j_idx += 1
-                for k in [t2, t1, a, b, c, m, 0, tc]:
+                for k in [t2, t1, a, b, c, m, w, tc, D]:
                     res[i_idx-1][j_idx-1].append(k)
         return xr.DataArray(
             data=res,
@@ -456,7 +456,7 @@ class LPPLS(object):
             coords=dict(
                         t2=obs_copy[0][(window_size-1):],
                         windowsizes=range(smallest_window_size, window_size, inner_increment),
-                        params=['t2', 't1', 'a', 'b', 'c', 'm', '0', 'tc'],
+                        params=['t2', 't1', 'a', 'b', 'c', 'm', 'w', 'tc', 'D'],
                         )
         )
 
